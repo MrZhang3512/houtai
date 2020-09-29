@@ -42,11 +42,13 @@ export const constantRoutes = [
     component: () => import('@/views/404'),
     hidden: true
   },
+  
 
   {
     path: '/',
     component: Layout,
     redirect: '/dashboard',
+    //在vue-admin中路由是由子路由决定的，如果子路由有一个以上，那么该路由为嵌套路由，如果只有一个，该路由为根路由
     children: [{
       path: 'dashboard',
       name: 'Dashboard',
@@ -54,112 +56,89 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
-
+//自定义一个员工管理模块
   {
-    path: '/example',
+    path: '/waiters',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/waiters/waiter',
+    name: 'Waiters',
+    // meta: { title: '员工管理', icon: 'user' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'waiter',
+        name: 'Waiter',
+        component: () => import('@/views/waiters/index'),
+        meta: { title: '员工管理', icon: 'user' }
       },
+      //详情页面
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'detail/:id',
+        name: 'Detail',
+        component: () => import('@/views/details/index'),
+        hidden: true,
+        meta: { titile:"详情"}
       }
     ]
   },
-
+  //自定义一个顾客管理
   {
-    path: '/form',
+    path: '/customers',
     component: Layout,
+    name: 'Customers',
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        name: 'Index',
+        component: () => import('@/views/customers/index'),
+        meta: { title: '顾客管理', icon: 'user' }
       }
     ]
   },
-
+  //自定义一个产品管理模块
   {
-    path: '/nested',
+    path: '/products',
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
+    name: 'Products',
     children: [
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
+        path: 'index',
+        name: 'Index',
+        component: () => import('@/views/products/index'),
+        meta: { title: '产品管理', icon: 'example' }
       }
     ]
   },
-
+  //自定义一个栏目管理
   {
-    path: 'external-link',
+    path: '/categorys',
     component: Layout,
+    name: 'Categorys',
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'index',
+        name: 'Index',
+        component: () => import('@/views/categorys/index'),
+        meta: { title: '栏目管理', icon: 'tree' }
+      }
+    ]
+  },
+  //自定义一个订单管理
+  {
+    path: '/orders',
+    component: Layout,
+    name: 'Orders',
+    children: [
+      {
+        path: 'index',
+        name: 'Index',
+        component: () => import('@/views/orders/index'),
+        meta: { title: '订单管理', icon: 'form' }
       }
     ]
   },
 
+
+ 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]

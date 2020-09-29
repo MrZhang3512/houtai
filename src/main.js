@@ -14,6 +14,11 @@ import router from './router'
 
 import '@/icons' // icon
 import '@/permission' // permission control
+//导入treeTable
+import ZkTable from 'vue-table-with-tree-grid'
+//注册组件
+Vue.component('treeTable', ZkTable)
+
 
 /**
  * If you don't want to use mock-server

@@ -1,6 +1,10 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
+    <div class="dashboard-text">
+      <h3>{{name}}</h3>
+      <!-- 分割线 -->
+      <el-divider content-position="left"></el-divider>
+    </div>
   </div>
 </template>
 
@@ -8,12 +12,13 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
+  name: 'dashboard',
+  data(){
+    return {
+      name:"后台管理系统"
+    }
   }
+ 
 }
 </script>
 
