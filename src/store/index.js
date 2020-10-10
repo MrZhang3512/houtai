@@ -15,6 +15,8 @@ import products from './products/index'
 import categorys from './categorys/index'
 //导入订单模块仓库
 import orders from './orders/index'
+//导入地址仓库
+import address from './address/index'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -26,7 +28,8 @@ const store = new Vuex.Store({
     customers,
     products,
     categorys,
-    orders
+    orders,
+    address
   },
   getters
 })

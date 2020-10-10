@@ -335,7 +335,7 @@ export default {
     handlerError(){
       this.$message({
         type:"warning",
-        message:"删除失败"
+        message:"上传失败"
       });
     },
     //状态开关
